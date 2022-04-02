@@ -9,6 +9,8 @@ let valorP = 0;
 let valorB = 0;
 let valorD = 0;
 let valorTotal;
+let nome;
+let adress;
 
 function selecionarPrato(prato) {
     const botaoSelecionado = document.querySelector(".selected");
@@ -89,23 +91,20 @@ function telaDeConfirmacao() {
 
     resumo.childNodes[3].textContent += `${valorTotal.toFixed(2)}`;
 
+    nome = prompt("Qual o seu nome?");
+    adress = prompt("Informe o endereço");
 }
 function finalizarPedido() {
-
-    let nome = prompt("Qual o seu nome?");
-    let adress = prompt("Informe o endereço");
 
     let params = encodeURIComponent(
         `Olá, gostaria de fazer o pedido:
         - Prato: ${pratoEscolhido}
         - Bebida: ${bebidaEscolhida}
         - Sobremesa: ${dessertEscolhida}
-       Total: R$ ${valorTotal.toFixed(2)}
+    Total: R$ ${valorTotal.toFixed(2)}
        
-        Nome: ${nome}
-        Endereço: ${adress}
-       
-       `);
+    Nome: ${nome}
+    Endereço: ${adress}`);
 
     const buttonStatus = document.querySelector(".ativo");
 

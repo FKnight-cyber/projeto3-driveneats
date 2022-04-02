@@ -66,34 +66,39 @@ function activateButton() {
 }
 
 function telaDeConfirmacao() {
-    const ativar = document.querySelector(".caixaInativa");
-    const ativarModal = document.querySelector(".modal");
+    const checkAtivo = document.querySelector(".ativo");
 
-    ativar.classList.add("confirmarPedido");
-    ativarModal.classList.add("overlay");
+    if (checkAtivo !== null) {
+        const ativar = document.querySelector(".caixaInativa");
+        const ativarModal = document.querySelector(".modal");
 
-    const pedido1 = document.querySelector(".nota");
-    const pedido2 = document.querySelector(".n2");
-    const pedido3 = document.querySelector(".n3");
-    const resumo = document.querySelector(".n4");
+        ativar.classList.add("confirmarPedido");
+        ativarModal.classList.add("overlay");
 
-    console.log(pedido1.childNodes[0].textContent)
-    console.log(pedido1.childNodes[1].textContent)
+        const pedido1 = document.querySelector(".nota");
+        const pedido2 = document.querySelector(".n2");
+        const pedido3 = document.querySelector(".n3");
+        const resumo = document.querySelector(".n4");
 
-    pedido1.childNodes[1].textContent = `${pratoEscolhido}`;
-    pedido1.childNodes[3].textContent += `${valorP.toFixed(2)}`;
-    pedido2.childNodes[1].textContent = `${bebidaEscolhida}`;
-    pedido2.childNodes[3].textContent += `${valorB.toFixed(2)}`;
-    pedido3.childNodes[1].textContent = `${dessertEscolhida}`;
-    pedido3.childNodes[3].textContent += `${valorD.toFixed(2)}`;
+        console.log(pedido1.childNodes[0].textContent)
+        console.log(pedido1.childNodes[1].textContent)
 
-    valorTotal = valorB + valorD + valorP;
+        pedido1.childNodes[1].textContent = `${pratoEscolhido}`;
+        pedido1.childNodes[3].textContent += `${valorP.toFixed(2)}`;
+        pedido2.childNodes[1].textContent = `${bebidaEscolhida}`;
+        pedido2.childNodes[3].textContent += `${valorB.toFixed(2)}`;
+        pedido3.childNodes[1].textContent = `${dessertEscolhida}`;
+        pedido3.childNodes[3].textContent += `${valorD.toFixed(2)}`;
 
-    resumo.childNodes[3].textContent += `${valorTotal.toFixed(2)}`;
+        valorTotal = valorB + valorD + valorP;
 
-    nome = prompt("Qual o seu nome?");
-    adress = prompt("Informe o endereço");
+        resumo.childNodes[3].textContent += `${valorTotal.toFixed(2)}`;
+
+        nome = prompt("Qual o seu nome?");
+        adress = prompt("Informe o endereço");
+    }
 }
+
 function finalizarPedido() {
 
     let params = encodeURIComponent(

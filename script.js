@@ -26,11 +26,12 @@ function selecionarPrato(prato) {
 }
 
 function selecionarBebida(bebida) {
-    const botaoSelecionado = document.querySelector(".bebidas").querySelector(".selected");
+    const botaoSelecionado = document.querySelector(".selected2");
+
     if (botaoSelecionado !== null) {
-        botaoSelecionado.classList.toggle("selected");
+        botaoSelecionado.classList.remove("selected2");
     }
-    bebida.classList.add("selected");
+    bebida.classList.add("selected2");
     hasBebida = true;
     activateButton();
 
@@ -40,13 +41,12 @@ function selecionarBebida(bebida) {
 }
 
 function selecionarDessert(dessert) {
-    const botaoSelecionado = document.querySelector(".dessert").querySelector(".selected");
-
+    const botaoSelecionado = document.querySelector(".selected3");
 
     if (botaoSelecionado !== null) {
-        botaoSelecionado.classList.toggle("selected")
+        botaoSelecionado.classList.remove("selected3")
     }
-    dessert.classList.add("selected");
+    dessert.classList.add("selected3");
     hasDessert = true;
     activateButton();
 
@@ -63,17 +63,49 @@ function activateButton() {
     }
 }
 
+function telaDeConfirmacao() {
+    const ativar = document.querySelector(".caixaInativa");
+    const ativarModal = document.querySelector(".modal");
 
+    ativar.classList.add("confirmarPedido");
+    ativarModal.classList.add("overlay");
 
-function finalizarPedido() {
+    const pedido1 = document.querySelector(".nota");
+    const pedido2 = document.querySelector(".n2");
+    const pedido3 = document.querySelector(".n3");
+    const resumo = document.querySelector(".n4");
+
+    console.log(pedido1.childNodes[0].textContent)
+    console.log(pedido1.childNodes[1].textContent)
+
+    pedido1.childNodes[1].textContent = `${pratoEscolhido}`;
+    pedido1.childNodes[3].textContent += `${valorP.toFixed(2)}`;
+    pedido2.childNodes[1].textContent = `${bebidaEscolhida}`;
+    pedido2.childNodes[3].textContent += `${valorB.toFixed(2)}`;
+    pedido3.childNodes[1].textContent = `${dessertEscolhida}`;
+    pedido3.childNodes[3].textContent += `${valorD.toFixed(2)}`;
+
     valorTotal = valorB + valorD + valorP;
-    console.log(valorTotal);
+
+    resumo.childNodes[3].textContent += `${valorTotal.toFixed(2)}`;
+
+}
+function finalizarPedido() {
+
+    let nome = prompt("Qual o seu nome?");
+    let adress = prompt("Informe o endereço");
+
     let params = encodeURIComponent(
         `Olá, gostaria de fazer o pedido:
         - Prato: ${pratoEscolhido}
         - Bebida: ${bebidaEscolhida}
         - Sobremesa: ${dessertEscolhida}
-     Total: R$ ${valorTotal.toFixed(2)}`);
+       Total: R$ ${valorTotal.toFixed(2)}
+       
+        Nome: ${nome}
+        Endereço: ${adress}
+       
+       `);
 
     const buttonStatus = document.querySelector(".ativo");
 
@@ -81,5 +113,6 @@ function finalizarPedido() {
         window.open("https://wa.me/5585997154567?text=" + params);
     }
 }
+
 
 

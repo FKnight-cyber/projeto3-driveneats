@@ -84,15 +84,15 @@ function telaDeConfirmacao() {
         console.log(pedido1.childNodes[1].textContent)
 
         pedido1.childNodes[1].textContent = `${pratoEscolhido}`;
-        pedido1.childNodes[3].textContent += `${valorP.toFixed(2)}`;
+        pedido1.childNodes[3].textContent = `${valorP.toFixed(2)}`;
         pedido2.childNodes[1].textContent = `${bebidaEscolhida}`;
-        pedido2.childNodes[3].textContent += `${valorB.toFixed(2)}`;
+        pedido2.childNodes[3].textContent = `${valorB.toFixed(2)}`;
         pedido3.childNodes[1].textContent = `${dessertEscolhida}`;
-        pedido3.childNodes[3].textContent += `${valorD.toFixed(2)}`;
+        pedido3.childNodes[3].textContent = `${valorD.toFixed(2)}`;
 
         valorTotal = valorB + valorD + valorP;
 
-        resumo.childNodes[3].textContent += `${valorTotal.toFixed(2)}`;
+        resumo.childNodes[3].textContent = `R$ ${valorTotal.toFixed(2)}`;
 
         nome = prompt("Qual o seu nome?");
         adress = prompt("Informe o endereço");
@@ -116,6 +116,14 @@ function finalizarPedido() {
     if (buttonStatus !== null) {
         window.open("https://wa.me/5585997154567?text=" + params);
     }
+}
+
+function cancelaPedido() {
+    const ativar = document.querySelector(".caixaInativa");
+    const ativarModal = document.querySelector(".modal");
+
+    ativar.classList.remove("confirmarPedido");
+    ativarModal.classList.remove("overlay");
 }
 
 
